@@ -46,3 +46,4 @@ public class LightSaberScript : MonoBehaviour
         line.SetPosition(1, endPosition.position);
     }
 }
+

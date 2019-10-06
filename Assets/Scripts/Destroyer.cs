@@ -26,7 +26,7 @@ public class Destroyer : MonoBehaviour
     /// </summary>
     /// <param name="collision">This will be the collider on the LightSaber weapon part</param>
     private void OnCollisionEnter(Collision collision) {
-        if(collision.gameObject.name == "LightSaber") {
+        if( (collision.gameObject.name == "LightSaber") || (collision.gameObject.name == "beamPivot") ) { //added the childName of the new lightsaber.
             //Casts Animation of Destruction. Needs coding and animation. AnimateDestruction();
             Destruction(collision.contacts[0]);
         }
