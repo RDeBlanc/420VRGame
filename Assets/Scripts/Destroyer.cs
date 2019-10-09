@@ -50,6 +50,7 @@ public class Destroyer : MonoBehaviour
         //Change right
         GameObject rightChild = GameObject.Instantiate(GetComponent<FruitThrow>().OrangeChild);
         rightChild.transform.position = transform.position + right;
+        rightChild.transform.rotation = Quaternion.Euler(180, 0, 0);
         rightChild.GetComponent<FruitThrow>().isChild = true;
         rightChild.GetComponent<FruitThrow>().randomThrow = true;
         Destroy(this.gameObject);
