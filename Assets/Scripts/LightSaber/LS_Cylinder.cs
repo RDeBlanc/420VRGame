@@ -53,5 +53,13 @@ public class LS_Cylinder : MonoBehaviour
         //line.SetPosition(0, startPosition.position); //these are the 2 inputs for start-position and end-positon in Unity.  This updates the light position.
         //line.SetPosition(1, endPosition.position);
     }
+
+    public void Extend() {
+        transform.localScale = new Vector3(x: beam_Width, y: beam_Length, z: beam_Width);
+    }
+
+    public void Retract() {
+        transform.localScale = new Vector3(x: beam_Width, y: 0.01f, z: beam_Width);
+    }
 }
 // TODO    deltatime && pivote
