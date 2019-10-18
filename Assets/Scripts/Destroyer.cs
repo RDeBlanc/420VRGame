@@ -29,6 +29,7 @@ public class Destroyer : MonoBehaviour
         if( (collision.gameObject.name == "LightSaber") || (collision.gameObject.name == "beamPivot") ) { //added the childName of the new lightsaber.
             //Casts Animation of Destruction. Needs coding and animation. AnimateDestruction();
             Destruction(collision.contacts[0]);
+            DisplayScore.score += 1;
         }
     }
 
