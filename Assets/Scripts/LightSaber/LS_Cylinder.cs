@@ -27,6 +27,18 @@ public class LS_Cylinder : MonoBehaviour
 
     void Update()
     {
+
+        if (isActivated) {
+            isOn = true;
+            transform.localScale = new Vector3(x: beam_Width, y: beam_Length, z: beam_Width);
+        }
+
+        if(!isActivated && isOn) {
+            isOn = false;
+            transform.localScale = new Vector3(x: beam_Width, y: 0.01f, z: beam_Width);
+        }
+
+
         //temp = transform.localScale;
         //temp.y = 2f;
 
@@ -49,10 +61,10 @@ public class LS_Cylinder : MonoBehaviour
     //Lerp() moves between 2 different positions.
     //endPosition.localPosition = Vector3.Lerp(endPosition.localPosition, extendedPosition, Time.deltaTime * (extendSpeed));
     public void Extend() {
-        transform.localScale = new Vector3(x: beam_Width, y: beam_Length, z: beam_Width);
+        isActivated = true;
     }
 
     public void Retract() {
-        transform.localScale = new Vector3(x: beam_Width, y: 0.01f, z: beam_Width);
+        isActivated = false;
     }
 }

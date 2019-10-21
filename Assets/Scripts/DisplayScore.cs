@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class DisplayScore : MonoBehaviour
 {
     public static int score = 0;
-    public Text Score;
+    public List<Text> Score;
     // Start is called before the first frame update
     void Start() {
         updateScore();
@@ -16,6 +16,9 @@ public class DisplayScore : MonoBehaviour
     }
 
     void updateScore() {
-        Score.text = "Score: " + score;
+        foreach(Text scoreObject in Score) {
+            scoreObject.text = "Score: " + score;
+        }
+        //Score[0].text = "Score: " + score;
     }
 }
