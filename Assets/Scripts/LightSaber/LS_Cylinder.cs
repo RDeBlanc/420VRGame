@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR;
 
 public class LS_Cylinder : MonoBehaviour
 {
@@ -12,7 +13,12 @@ public class LS_Cylinder : MonoBehaviour
     public float extendSpeed;
 
     //extending on button press varables.
+    public bool isOn;
     public bool isActivated;
+    public bool testing = false;
+
+    //public SteamVR_TrackedObject rightController = null;
+    //public SteamVR_Controller.Device mDevice;
 
     //Vector3 temp; //Vector3 is a 3D position.
 
@@ -27,35 +33,51 @@ public class LS_Cylinder : MonoBehaviour
 
     void Update()
     {
+        //Left: 14 triggers/ for extending lightsaber
+        //Right: 15
 
-        if (isActivated) {
-            isOn = true;
-            transform.localScale = new Vector3(x: beam_Width, y: beam_Length, z: beam_Width);
-        }
-
-        if(!isActivated && isOn) {
-            isOn = false;
-            transform.localScale = new Vector3(x: beam_Width, y: 0.01f, z: beam_Width);
-        }
-
-
-        //temp = transform.localScale;
-        //temp.y = 2f;
-
-
-        if (Input.GetKeyDown(KeyCode.Space)) //extends/de-tends light on button press.          //TODO change later to work with VR controls instead of spacebar.
-        {
-            if (isActivated == true)
-            {
+        //Left: 11 grips while squeezed
+        //Right: 12
+        if (testing) {
+            if (isOn == true && Input.GetButton("Submit")) {
                 isActivated = false;
             }
-            else isActivated = true;
+            else if (Input.GetButton("Submit")) {
+                isActivated = true;
+            }
+
+
+
+
+
+
+
+
+
+            if (isActivated) {
+                isOn = true;
+                transform.localScale = new Vector3(x: beam_Width, y: beam_Length, z: beam_Width);
+            }
+
+            if (!isActivated && isOn) {
+                isOn = false;
+                transform.localScale = new Vector3(x: beam_Width, y: 0.01f, z: beam_Width);
+            }
+        } else {
+            //temp = transform.localScale;
+            //temp.y = 2f;
+
+
+            if (Input.GetKeyDown(KeyCode.Space)) //extends/de-tends light on button press.          //TODO change later to work with VR controls instead of spacebar.
+            {
+                if (isActivated == true) {
+                    isActivated = false;
+                } else isActivated = true;
+            }
+            if (isActivated == true) {
+                Extend();
+            } else Retract();
         }
-        if (isActivated == true)
-        {
-            Extend();
-        }
-        else Retract();
     }
 
     //Lerp() moves between 2 different positions.
