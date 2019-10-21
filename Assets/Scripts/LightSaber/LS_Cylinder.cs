@@ -12,15 +12,14 @@ public class LS_Cylinder : MonoBehaviour
     public float extendSpeed;
 
     //extending on button press varables.
-    private bool isActivated = false;
+    public bool isActivated;
 
     //Vector3 temp; //Vector3 is a 3D position.
-
 
     void Start()
     {
         if (beam_Width == 0) beam_Width = 0.15f; //default settings
-        if (beam_Length == 0) beam_Length = 2f;
+        if (beam_Length == 0) beam_Length = 2.5f;
         if (extendSpeed == 0) extendSpeed = 5;
 
     }
@@ -42,18 +41,13 @@ public class LS_Cylinder : MonoBehaviour
         }
         if (isActivated == true)
         {
-            //Lerp() moves between 2 different positions.
-            transform.localScale = new Vector3(x: beam_Width, y: beam_Length, z: beam_Width);
-            //endPosition.localPosition = Vector3.Lerp(endPosition.localPosition, extendedPosition, Time.deltaTime * (extendSpeed));
+            Extend();
         }
-        else transform.localScale = new Vector3(x: beam_Width, y: 0.01f, z: beam_Width);
-
-
-
-        //line.SetPosition(0, startPosition.position); //these are the 2 inputs for start-position and end-positon in Unity.  This updates the light position.
-        //line.SetPosition(1, endPosition.position);
+        else Retract();
     }
 
+    //Lerp() moves between 2 different positions.
+    //endPosition.localPosition = Vector3.Lerp(endPosition.localPosition, extendedPosition, Time.deltaTime * (extendSpeed));
     public void Extend() {
         transform.localScale = new Vector3(x: beam_Width, y: beam_Length, z: beam_Width);
     }
@@ -62,4 +56,3 @@ public class LS_Cylinder : MonoBehaviour
         transform.localScale = new Vector3(x: beam_Width, y: 0.01f, z: beam_Width);
     }
 }
-// TODO    deltatime && pivote
