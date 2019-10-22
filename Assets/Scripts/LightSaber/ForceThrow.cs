@@ -68,8 +68,8 @@ public class ForceThrow : MonoBehaviour
         player = GameObject.Find(object_throwing);
         invisableObject1 = GameObject.Find(object_being_thrown_invis1); //make these objects invisable later
         invisableObject2 = GameObject.Find(object_being_thrown_invis2);
-        invisableObject1.GetComponent<MeshRenderer>().enabled = false; //make main item held invisable and throw duplicate.
-        invisableObject2.GetComponent<MeshRenderer>().enabled = false;
+        invisableObject1.GetComponent<MeshRenderer>().enabled = true; //make main item held invisable and throw duplicate.
+        invisableObject2.GetComponent<MeshRenderer>().enabled = true;
 
         itemToRotate = gameObject.transform.GetChild(0); //Find The Weapon That Is The Child Of The Empty Object
 

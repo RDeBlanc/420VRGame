@@ -27,7 +27,14 @@ public class LS_Cylinder : MonoBehaviour
         if (beam_Width == 0) beam_Width = 0.15f; //default settings
         if (beam_Length == 0) beam_Length = 2.5f;
         if (extendSpeed == 0) extendSpeed = 5;
-
+        if (isActivated == true) 
+        {
+            Extend();
+        }
+        if (isActivated == false) 
+        {
+            Retract();
+        }
     }
 
 
@@ -39,20 +46,6 @@ public class LS_Cylinder : MonoBehaviour
         //Left: 11 grips while squeezed
         //Right: 12
         if (testing) {
-            if (isOn == true && Input.GetButton("Submit")) {
-                isActivated = false;
-            }
-            else if (Input.GetButton("Submit")) {
-                isActivated = true;
-            }
-
-
-
-
-
-
-
-
 
             if (isActivated) {
                 isOn = true;
@@ -84,9 +77,11 @@ public class LS_Cylinder : MonoBehaviour
     //endPosition.localPosition = Vector3.Lerp(endPosition.localPosition, extendedPosition, Time.deltaTime * (extendSpeed));
     public void Extend() {
         isActivated = true;
+        transform.localScale = new Vector3(x: beam_Width, y: beam_Length, z: beam_Width);
     }
 
     public void Retract() {
         isActivated = false;
+        transform.localScale = new Vector3(x: beam_Width, y: 0.01f, z: beam_Width);
     }
 }
