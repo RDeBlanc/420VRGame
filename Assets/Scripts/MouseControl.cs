@@ -15,7 +15,7 @@ public class MouseControl : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        Debug.DrawRay(ray.origin, ray.direction, Color.blue,Mathf.Infinity);
+        //Debug.DrawRay(ray.origin, ray.direction, Color.blue,Mathf.Infinity);
         if (Physics.Raycast(ray.origin, ray.direction, out hit, Mathf.Infinity)) {
 
             transform.position = hit.point;
